@@ -1,12 +1,11 @@
-const request = require("supertest");
 const express = require("express");
-
 const app = express();
+const PORT = 3000;
+
 app.get("/", (req, res) => res.send("Hello DevOps CI World 🚀"));
 
-describe("GET /", () => {
-  it("responds with Hello DevOps CI World 🚀", async () => {
-    const res = await request(app).get("/");
-    expect(res.text).toBe("Hello DevOps CI World 🚀");
-  });
-});
+if (require.main === module) {
+  app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+}
+
+module.exports = app; // for testing
