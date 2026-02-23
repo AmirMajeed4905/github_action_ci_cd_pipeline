@@ -1,24 +1,42 @@
-name: Node CI
+name: Simulated CI/CD Pipeline
 
+# Trigger workflow on push or pull request
 on:
   push:
-    branches: [ "main" ]
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
 
 jobs:
   build:
+    name: Build and Test Simulation
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
+      # Checkout the repo
+      - name: Checkout Repository
         uses: actions/checkout@v3
 
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: 18
+      # Simulate dependency installation
+      - name: Simulate Install
+        run: echo "Skipping npm install for simulation"
 
-      - name: Install dependencies
-        run: npm install
+      # Simulate build step
+      - name: Simulate Build
+        run: echo "Build simulated successfully! 🏗️"
 
-      - name: Run simple test
-        run: node index.js
+      # Simulate running tests
+      - name: Run Dummy Tests
+        run: echo "All tests passed! ✅"
+
+      # Simulate deploy step
+      - name: Simulate Deployment
+        run: echo "Deployment simulated successfully! 🚀"
+
+      # Show final summary
+      - name: Pipeline Complete
+        run: |
+          echo "CI/CD pipeline simulation finished!"
+          echo "✅ Checkout → Build → Test → Deploy flow completed"
